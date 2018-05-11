@@ -1,7 +1,7 @@
 {
     "start_url": "/?utm_source=homescreen",
     "name": "pwa-project-abc",
-    "short_name": "pwa-project",
+    "short_name": "pwa-project-abc",
     "icons": [
         {
             "src": "img/icons/android-chrome-512x512.png",
