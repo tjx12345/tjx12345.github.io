@@ -1,0 +1,13 @@
+{
+  "name": "myapp",
+  "short_name": "app",
+  "description": "好看",
+  "lang": "zh-CN",
+  "start_url": "/index.html",
+  "display": "standalone",
+  "icons": [
+    {
+      "src": "/e.png"
+    }
+  ]
+}
