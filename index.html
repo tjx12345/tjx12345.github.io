@@ -65,8 +65,18 @@
 <!-- <link rel="apple-touch-icon" type="image/png" sizes="310x310" href="ms-icon-310x310.png"> -->
 
     <script>
+const sendMessageToSW = msg => new Promise((resolve, reject) => {
+    const messageChannel = new MessageChannel();
+    messageChannel.port1.onmessage = event => {
+        if (event.data.error) {
+            reject(event.data.error);
+        } else {
+            resolve(event.data);
+        }
+    };
 
-    const sendMessageToSW = msg => navigator.serviceWorker.controller && navigator.serviceWorker.controller.postMessage(msg);
+    navigator.serviceWorker.controller && navigator.serviceWorker.controller.postMessage(msg, [messageChannel.port2]);
+});
 
         if ('serviceWorker' in navigator) { 
          window.addEventListener('load', function() {   
@@ -79,13 +89,19 @@
                // registration failed :( 
                console.log('ServiceWorker registration failed: ', err); 
             })
-           .then(()=>sendMessageToSW('hellow'))
+           .then(()=> {
+                sendMessageToSW('hellow').then(data=>{
+                    alert(data);
+                });
+
+           })
 
          });
         }
 
 
-        window.addEventListener('message',event => alert(event.data));
+
+        // window.addEventListener('message',event => alert(event.data));
 
 
 </script>
