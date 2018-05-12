@@ -29,7 +29,7 @@ if ('serviceWorker' in navigator) {
     window.addEventListener('load', function () {
         navigator.serviceWorker.register('/service-worker.js', {scope: '/'})
             .then(function (registration) {
-                reg.update();
+                registration.update();
                 // 注册成功
                 console.log('ServiceWorker registration successful with scope: ', registration.scope);
             })
