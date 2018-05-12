@@ -5,9 +5,17 @@
   "lang": "zh-CN",
   "start_url": "/index.html",
   "display": "standalone",
+  "theme_color": "#0275d8",
   "icons": [
     {
-      "src": "/e.png"
+      "src": "/icons/ms-icon-150x150.png",
+      "sizes": "150x150",
+      "type": "image/png"
+    },
+    {
+      "src": "ms-icon-310x310.png",
+      "sizes": "310x310",
+      "type": "image/png"
     }
   ]
 }
