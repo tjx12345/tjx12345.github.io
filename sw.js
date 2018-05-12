@@ -7,7 +7,17 @@ toolbox.router.get('/*', toolbox.networkFirst, { networkTimeoutSeconds: 5});
 
  const _self = this;
  console.log(_self);
-        _self.addEventListener('message',event => console.log(event.data));
+        _self.addEventListener('message',event => {
+
+            console.log(event.data)
+                        // 群发所有tab
+            // 页面
+            _self.clients.matchAll().then(function(clients) {
+            clients.forEach(function(client) {
+                client.postMessage('Service worker attached.');
+            })
+
+        });
         console.log('In service worker.');
 
         _self.addEventListener('install', function () {
@@ -18,10 +28,5 @@ toolbox.router.get('/*', toolbox.networkFirst, { networkTimeoutSeconds: 5});
             console.log('Activated');
         });
 
-        // 群发所有tab
-        // 页面
-        _self.clients.matchAll().then(function(clients) {
-    clients.forEach(function(client) {
-        client.postMessage('Service worker attached.');
-    })
+
 });

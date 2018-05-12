@@ -68,6 +68,7 @@
 const sendMessageToSW = msg => new Promise((resolve, reject) => {
     const messageChannel = new MessageChannel();
     messageChannel.port1.onmessage = event => {
+        alert(event.data);
         if (event.data.error) {
             reject(event.data.error);
         } else {
@@ -92,7 +93,8 @@ const sendMessageToSW = msg => new Promise((resolve, reject) => {
            .then(()=> {
                 sendMessageToSW('hellow').then(data=>{
                     alert(data);
-                });
+                })
+                .catch(e=>console.log(e))
 
            })
 
