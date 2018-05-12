@@ -27,7 +27,7 @@
 
 if ('serviceWorker' in navigator) {
     window.addEventListener('load', function () {
-        navigator.serviceWorker.register('/sw.js', {scope: '/'})
+        navigator.serviceWorker.register('/service-worker.js?v=20180111193545', {scope: '/'})
             .then(function (registration) {
 
                 // 注册成功
