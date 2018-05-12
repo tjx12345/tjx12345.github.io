@@ -91,7 +91,8 @@ const sendMessageToSW = msg => new Promise((resolve, reject) => {
                console.log('ServiceWorker registration failed: ', err); 
             })
            .then(()=> {
-                sendMessageToSW('hellow').then(data=>{
+                sendMessageToSW('hellow')
+                .then(data=>{
                     alert(data);
                 })
                 .catch(e=>console.log(e))
