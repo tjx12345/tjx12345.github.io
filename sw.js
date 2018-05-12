@@ -6,7 +6,8 @@ toolbox.router.get('/*', toolbox.networkFirst, { networkTimeoutSeconds: 5});
 
 
  const _self = this;
-        _self.addEventListener('message',msg => alert(msg));
+ console.log(_self);
+        _self.addEventListener('message',event => console.log(event.data));
         console.log('In service worker.');
 
         _self.addEventListener('install', function () {
