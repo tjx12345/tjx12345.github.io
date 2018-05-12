@@ -16,7 +16,7 @@
 
     e.userChoice.then(function (choiceResult) {
         if (choiceResult.outcome === 'dismissed') {
-            console.log('用户取消安装应用');
+            console.log('+');
         }
         else {
             console.log('用户安装了应用');
@@ -29,7 +29,7 @@ if ('serviceWorker' in navigator) {
     window.addEventListener('load', function () {
         navigator.serviceWorker.register('/service-worker.js', {scope: '/'})
             .then(function (registration) {
-
+                reg.update();
                 // 注册成功
                 console.log('ServiceWorker registration successful with scope: ', registration.scope);
             })
