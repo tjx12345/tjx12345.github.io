@@ -17,3 +17,11 @@ toolbox.router.get('/*', toolbox.networkFirst, { networkTimeoutSeconds: 5});
         _self.addEventListener('activate', function () {
             console.log('Activated');
         });
+
+        // 群发所有tab
+        // 页面
+        _self.clients.matchAll().then(function(clients) {
+    clients.forEach(function(client) {
+        client.postMessage('Service worker attached.');
+    })
+});
