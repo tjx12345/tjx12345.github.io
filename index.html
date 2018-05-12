@@ -90,14 +90,11 @@ const sendMessageToSW = msg => new Promise((resolve, reject) => {
                // registration failed :( 
                console.log('ServiceWorker registration failed: ', err); 
             })
-           .then(()=> {
-                sendMessageToSW('hellow')
-                .then(data=>{
+           .then(()=> sendMessageToSW('hellow'))
+           .then(data=>{
                     alert(data);
-                })
-                .catch(e=>console.log(e))
-
-           })
+            })
+            .catch(e=>console.log(e))
 
          });
         }

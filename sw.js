@@ -11,15 +11,12 @@ toolbox.router.get('/*', toolbox.networkFirst, { networkTimeoutSeconds: 5});
 
             console.log(event.data);
 
-            event.source.postMessage('ok');
-
-                        // 群发所有tab
-            // 页面
-            // _self.clients.matchAll().then(function(clients) {
-            // clients.forEach(function(client) {
-            //     console.log(client);
-            //     client.postMessage('Service worker attached.');
-            // })
+            _self.clients.matchAll().then(function(clients) {
+                clients.forEach(function(client) {
+                    client.postMessage('Service worker attached.');
+                })
+            });
+            // 群发所有tab
 
         });
         console.log('In service worker.');
