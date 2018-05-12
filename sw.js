@@ -32,5 +32,3 @@ toolbox.router.get('/*', toolbox.networkFirst, { networkTimeoutSeconds: 5});
             console.log('Activated');
         });
 
-
-});
