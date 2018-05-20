@@ -1,4 +1,13 @@
 
+  document.querySelector('#share').onclick = function(){
+      navigator.share({
+        title: document.title,
+        text: 'Hello World',
+        url: 'https://www.baidu.com',
+      });
+  }
+
+
 const sendMessageToSW = msg => new Promise((resolve, reject) => {
     const messageChannel = new MessageChannel();
     messageChannel.port1.onmessage = event => {
