@@ -15,8 +15,6 @@
 
     <!-- Custom fonts for this template -->
     <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-    <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
-    <link href='https://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic,900,900italic' rel='stylesheet' type='text/css'>
 
     <!-- Plugin CSS -->
     <link href="vendor/magnific-popup/magnific-popup.css" rel="stylesheet">
@@ -64,47 +62,7 @@
 <!-- <link rel="icon" type="image/png" sizes="310x310" href="/icons/ms-icon-310x310.png"> -->
 <!-- <link rel="apple-touch-icon" type="image/png" sizes="310x310" href="ms-icon-310x310.png"> -->
 
-    <script>
-const sendMessageToSW = msg => new Promise((resolve, reject) => {
-    const messageChannel = new MessageChannel();
-    messageChannel.port1.onmessage = event => {
-        alert(event.data);
-        if (event.data.error) {
-            reject(event.data.error);
-        } else {
-            resolve(event.data);
-        }
-    };
-
-    navigator.serviceWorker.controller && navigator.serviceWorker.controller.postMessage(msg, [messageChannel.port2]);
-});
-
-        if ('serviceWorker' in navigator) { 
-         window.addEventListener('load', function() {   
-           navigator.serviceWorker.register('/sw.js').then(
-             function(registration) { 
-               // Registration was successful
-               console.log('ServiceWorker registration successful with scope: ', registration.scope); 
-           }, 
-             function(err) { 
-               // registration failed :( 
-               console.log('ServiceWorker registration failed: ', err); 
-            })
-           .then(()=> sendMessageToSW('hellow'))
-           .then(data=>{
-                    alert(data);
-            })
-            .catch(e=>console.log(e))
-
-         });
-        }
-
-
-
-        // window.addEventListener('message',event => alert(event.data));
-
-
-</script>
+  <script type="text/javascript" src="main.js"></script>
 
 
   </head>
