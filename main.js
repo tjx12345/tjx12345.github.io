@@ -1,5 +1,6 @@
 
   document.querySelector('#share').onclick = function(){
+    console.log('准备分享');
       navigator.share({
         title: document.title,
         text: 'Hello World',
