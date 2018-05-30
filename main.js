@@ -1,5 +1,5 @@
 window.onload = function () {
-  alert('1111');
+  alert('22222');
   if (!'navigator' in window) {
     alert('没有navigator对象');
   } else if (!'mozApps' in window.navigator) {
