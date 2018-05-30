@@ -1,6 +1,6 @@
+window.onload = function () {
 
-  alert('运行');
-
+  alert(navigator.share);
   document.querySelector('#share').onclick = function(){
     alert('开始分享')
       navigator.share({
@@ -50,3 +50,11 @@ const sendMessageToSW = msg => new Promise((resolve, reject) => {
 
 
 
+        // window.addEventListener('message',event => alert(event.data));
+
+
+
+
+
+
+}
