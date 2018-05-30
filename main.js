@@ -1,7 +1,7 @@
 window.onload = function () {
-
+  alert('1111');
   alert(navigator.mozApps.install);
-  alert(navigator.mozApps);
+  // alert(navigator.mozApps);
 
 
 
