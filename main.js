@@ -1,11 +1,16 @@
+window.onload = function () {
 
+  alert(navigator.share);
   document.querySelector('#share').onclick = function(){
-    console.log('准备分享');
+    alert('开始分享')
       navigator.share({
         title: document.title,
         text: 'Hello World',
         url: 'https://www.baidu.com',
-      });
+      })
+      .then(res=> {
+        alert(res);
+      })
   }
 
 
@@ -47,3 +52,9 @@ const sendMessageToSW = msg => new Promise((resolve, reject) => {
 
         // window.addEventListener('message',event => alert(event.data));
 
+
+
+
+
+
+}
