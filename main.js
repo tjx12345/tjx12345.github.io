@@ -1,12 +1,17 @@
 window.onload = function () {
 
-  alert(navigator.share);
+  alert(navigator.mozApps.install);
+  alert(navigator.mozApps);
+
+
+
+// 分享在我手机的chrome浏览器演示
   document.querySelector('#share').onclick = function(){
     alert('开始分享')
       navigator.share({
         title: document.title,
         text: 'Hello World',
-        url: 'https://www.baidu.com',
+        url: '/',
       })
       .then(res=> {
         alert(res);
