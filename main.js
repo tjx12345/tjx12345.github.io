@@ -1,7 +1,13 @@
 window.onload = function () {
   alert('1111');
-  alert(navigator.mozApps.install);
-  // alert(navigator.mozApps);
+  if (!'navigator' in window) {
+    alert('没有navigator对象');
+  } else if (!'mozApps' in window.navigator) {
+    alert('没有navigator.mozApps');
+  } else if (window.navigator.mozApps && !'install' in window.navigator.mozApps) {
+    alert('没有install函数');
+  }
+  
 
 
 
