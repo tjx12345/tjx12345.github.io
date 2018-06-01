@@ -1,23 +1,23 @@
 <html>
 <head>
   <meta charset="UTF-8">
-  <title>Document</title>
-      <link rel="apple-touch-icon" sizes="57x57" href="/icons/apple-icon-57x57.png">
-    <link rel="apple-touch-icon" sizes="60x60" href="/icons/apple-icon-60x60.png">
-    <link rel="apple-touch-icon" sizes="72x72" href="/icons/apple-icon-72x72.png">
-    <link rel="apple-touch-icon" sizes="76x76" href="/icons/apple-icon-76x76.png">
-    <link rel="apple-touch-icon" sizes="114x114" href="/icons/apple-icon-114x114.png">
-    <link rel="apple-touch-icon" sizes="120x120" href="/icons/apple-icon-120x120.png">
-    <link rel="apple-touch-icon" sizes="144x144" href="/icons/apple-icon-144x144.png">
-    <link rel="apple-touch-icon" sizes="152x152" href="/icons/apple-icon-152x152.png">
-    <link rel="apple-touch-icon" sizes="180x180" href="/icons/apple-icon-180x180.png">
-    <link rel="icon" type="image/png" sizes="192x192"  href="/icons/android-icon-192x192.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="/icons/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="96x96" href="/icons/favicon-96x96.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="/icons/favicon-16x16.png">
-    <link rel="manifest" href="/manifest.json">
+  <title>Document11\</title>
+      <link rel="apple-touch-icon" sizes="57x57" href="icons/apple-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="icons/apple-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="icons/apple-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="icons/apple-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="icons/apple-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="icons/apple-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="icons/apple-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="icons/apple-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="icons/apple-icon-180x180.png">
+    <link rel="icon" type="image/png" sizes="192x192"  href="icons/android-icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="icons/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="icons/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="icons/favicon-16x16.png">
+    <link rel="manifest" href="manifest.json">
     <meta name="msapplication-TileColor" top="#ffffff">
-    <meta name="msapplication-TileImage" top="/icons/ms-icon-144x144.png">
+    <meta name="msapplication-TileImage" top="icons/ms-icon-144x144.png">
     <meta name="theme-color" top="#ffffff">
 
 
@@ -156,7 +156,7 @@
 </head>
 <body>
 
-<div class="box" onclick="navigator.share({title:'分享吧!',text:'送给好友玩',url:'/'})">
+<div class="box" onclick="navigator.share({title:'分享吧!',text:'送给好友玩',url:'/index.html'})">
   <ul class="minbox">
     <li></li>
     <li></li>
@@ -180,20 +180,41 @@
 
 
 
-
-
-  <script src="https://www.gstatic.com/firebasejs/5.0.3/firebase.js"></script>
+  <script src="firebase.js"></script>
 <script>
   // Initialize Firebase
-  // var config = {
-  //   apiKey: "AIzaSyB0TFeAtjPaLJgpgPH8blnMLcEL-0ZeZow",
-  //   authDomain: "a1a1a1a1-5dee3.firebaseapp.com",
-  //   databaseURL: "https://a1a1a1a1-5dee3.firebaseio.com",
-  //   projectId: "a1a1a1a1-5dee3",
-  //   storageBucket: "",
-  //   messagingSenderId: "226276670859"
-  // };
-  // firebase.initializeApp(config);
+//   var config = {
+//     apiKey: "AIzaSyDRVcdXVgwqQTIAkdIqJt3i-PlcrjEcSJk",
+//     authDomain: "aaaa-3aa3c.firebaseapp.com",
+//     databaseURL: "https://aaaa-3aa3c.firebaseio.com",
+//     projectId: "aaaa-3aa3c",
+//     storageBucket: "aaaa-3aa3c.appspot.com",
+//     messagingSenderId: "406221780905"
+//   };
+//   firebase.initializeApp(config);
+
+//   const messaging = firebase.messaging();
+//   // alert(1);
+//   // console.dir(messaging);
+//   messaging.usePublicVapidKey('BIW871RvPKsWqShOmBIrlLojUvHrbv88-9ySVm-rBhhKX0LcyqXT9exMHEim5as-yv6lWYYunN5ta1vJr98ITSg');
+//   // 申请接收消息
+//   messaging.requestPermission().then(function() {
+//   console.log('Notification permission granted.');
+//   // TODO(developer): Retrieve an Instance ID token for use with FCM.
+//   // ...
+// }).catch(function(err) {
+//   console.log('Unable to get permission to notify.', err);
+// });
+
+// messaging.onMessage(function(payload) {
+//     console.log('Message received. ', payload);
+//     // [START_EXCLUDE]
+//     // Update the UI to include the received message.
+//     appendMessage(payload);
+//     // [END_EXCLUDE]
+//   });
+
+
 </script>
   
   <script type="text/javascript" src="./main.js"></script>

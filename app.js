@@ -17,29 +17,50 @@
 const Koa = require('koa');
 let app = new Koa();
 // 向推送服务,发送消息
-const webPush = require('web-push');
+
 const bodyParser = require('koa-bodyparser');
 const Router = require('koa-router');
 
 const endPoints = [];
-
+// const webPush = require('web-push');
+// const vapidKeys = webPush.generateVAPIDKeys();
+ 
+// webPush.setGCMAPIKey('AIzaSyDRVcdXVgwqQTIAkdIqJt3i-PlcrjEcSJk');
 // 也可以直接根据 web-push 库生成
-const vapidKeys = webPush.generateVAPIDKeys();
-console.log(vapidKeys);
-
+var webpush = require('web-push');
+var vapidKeys = webpush.generateVAPIDKeys(); // 1.生成公私钥
+webpush.setVapidDetails( // 2.设置公私钥
+    'mailto:tujunxiong@tokenpai.com',
+    vapidKeys.publicKey,
+    vapidKeys.privateKey
+);
+console.log(vapidKeys.publicKey);
 
 let router = new Router();
 router
 .post('/test1', ctx => {
-  console.log(ctx.request.body);
+  console.dir(ctx.request.body);
   console.log('请求进入post:/test1')
   // 保存客户端点标识
-  endPoints.push(ctx.request.body.endpoint);
+  endPoints.push(ctx.request.body);
   ctx.status = 200;
-  ctx.body = '<h1>ok</h1>';
-})
-.options('/test1', ctx => {
-  ctx.body = '<h1>ok</h1>';
+  endPoints.forEach( pushSubscription =>{
+            setInterval(function() {
+              console.log(pushSubscription)
+              // 发送消息
+                webpush.sendNotification(pushSubscription,'服务器的消息来啦!')
+                              .then(res=>{
+                                console.log('ok');
+                                console.log(res);
+                              })
+                              .catch(err=>{
+                                console.log(err );
+                              });
+            },2000)
+            // 
+            // 
+            
+    });
 })
 .get('/pushmessage', async ctx => {
    
@@ -56,8 +77,8 @@ router
 })
 
 
-app.use(require('koa-static')('../last_test_pwa'));
+app.use(require('koa-static')('../tjx12345.github.io'));
 app.use(bodyParser() );
 app.use(router.routes());
 
-app.listen(3000);
+app.listen(8888);
