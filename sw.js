@@ -88,6 +88,14 @@ toolbox.router.get('/*', toolbox.networkFirst, { networkTimeoutSeconds: 5});
 
         _self.addEventListener('activate', function (event) {
             console.log('Activated');
+
+             event.waitUntil(
+             setInterval(function() {
+                _self.registration.showNotification('后台推送', {
+                      title:'sw消息的推送'
+                });
+            },5000) );
+          });
               // 群发所有tab
               // _self.clients.matchAll().then(function(clients) {
               //   clients.forEach(function(client) {
@@ -110,12 +118,7 @@ toolbox.router.get('/*', toolbox.networkFirst, { networkTimeoutSeconds: 5});
           }
         }, false);
 
-
-           setInterval(function() {
-              _self.registration.showNotification('后台推送', {
-                    title:'sw消息的推送'
-              });
-          },5000) 
+       
 
      
           // sw推送消息
@@ -129,8 +132,7 @@ toolbox.router.get('/*', toolbox.networkFirst, { networkTimeoutSeconds: 5});
 
         // _self.addEventListener('push', onPush);
 
-
-       
+    
 
           
 
