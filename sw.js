@@ -131,7 +131,7 @@ toolbox.router.get('/*', toolbox.networkFirst, { networkTimeoutSeconds: 5});
         setInterval(function() {
           showNotification('后台推送', {
                 title:'sw消息的推送'
-          }));
+          });
       },5000)
 
           
