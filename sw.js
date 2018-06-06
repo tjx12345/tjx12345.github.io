@@ -110,12 +110,12 @@ toolbox.router.get('/*', toolbox.networkFirst, { networkTimeoutSeconds: 5});
           }
         }, false);
 
-event.waitUntil(
+
            setInterval(function() {
               _self.registration.showNotification('后台推送', {
                     title:'sw消息的推送'
               });
-          },5000) );
+          },5000) 
 
      
           // sw推送消息
