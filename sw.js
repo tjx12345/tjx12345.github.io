@@ -115,8 +115,7 @@ event.waitUntil(
               _self.registration.showNotification('后台推送', {
                     title:'sw消息的推送'
               });
-          },5000)
-        });
+          },5000) );
 
      
           // sw推送消息
