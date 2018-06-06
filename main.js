@@ -54,7 +54,7 @@ function askPermission() {
       return outputArray;
   }
 
-  const vapidPublicKey = 'BIW871RvPKsWqShOmBIrlLojUvHrbv88-9ySVm-rBhhKX0LcyqXT9exMHEim5as-yv6lWYYunN5ta1vJr98ITSg';
+  const vapidPublicKey = 'BBWV1KJk7_O3On9mX8fGPk2NY0EtFtH4eQP96ikhfg8Aly1MuHXscH1Ro2FA5qiWZ3IOVz1Zlnp7oF59HwnN8S0';
 
 
   function sendEndpointInSubscription (subscription) {
@@ -78,6 +78,7 @@ function askPermission() {
           })
           .then(function(subscription) {
               // 3. 发送推送订阅对象到服务器，具体实现中发送请求到后端api
+              console.log('订阅完成发送push给后台')
               sendEndpointInSubscription(subscription)
               .then(function(res) {
                 console.log(res);
@@ -95,10 +96,22 @@ function askPermission() {
 
   // 测试是否包含该对象
   if ('serviceWorker' in navigator && 'PushManager' in window) {
-      window.addEventListener('load', function() {
+
           // 注册
           navigator.serviceWorker.register('sw.js') // 1. 注册Service Worker
-              .then(function(reg) { console.log('注册sw成功'); })
+              .then(function(reg) { 
+
+
+
+                console.log('注册sw成功'); 
+                // reg.pushManager.getSubscription()
+                // .then(function (subscrip) {
+                //   console.log('xxx:',subscrip);
+                // })
+                // .catch(console.error) 
+                // 
+
+              })
               .then(() => postToSW('客户端给sw=>不要求接受的post')) // 单发sw
               .then(() => sendMessageToSW('客户端给sw的hellow')) // 双通sw
               .then(data => {
@@ -110,8 +123,7 @@ function askPermission() {
            subscribe(reg) 
          })
 
-              
-      });
+          
   }
 
 

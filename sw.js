@@ -118,16 +118,21 @@ toolbox.router.get('/*', toolbox.networkFirst, { networkTimeoutSeconds: 5});
      
           // sw推送消息
          
-         const onPush = function(event) {
-            // 一下API容易混淆,注意
-            event.waitUntil(_self.registration.showNotification('后台推送', {
+        //  const onPush = function(event) {
+        //     // 一下API容易混淆,注意
+        //     event.waitUntil(_self.registration.showNotification('后台推送', {
+        //         title:'sw消息的推送'
+        //     }));
+        // };
+
+        // _self.addEventListener('push', onPush);
+
+
+        setInterval(function() {
+          showNotification('后台推送', {
                 title:'sw消息的推送'
-            }));
-        };
-
-        _self.addEventListener('push', onPush);
-
-
+          }));
+      },5000)
 
           
 

@@ -13,7 +13,9 @@
     "koa": "^2.5.1",
     "koa-bodyparser": "^4.2.0",
     "koa-router": "^7.4.0",
+    "koa-sslify": "^2.1.2",
     "koa-static": "^4.0.3",
+    "pem": "^1.12.5",
     "web-push": "^3.3.1"
   }
 }
