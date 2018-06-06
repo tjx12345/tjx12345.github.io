@@ -352,12 +352,12 @@
             clearInterval(this.timeInterval);
 
             var html = ' <div><p>'+this.runTime/10+'秒内我擦死了'+this.eraseCount+'只熊孩子！</p>'+'</div>'+
-                '<div class="btn_wrapper"> <div id="shareGame" class="btn" onclick="navigator.share({url:"/index.html"})">分享</div>'+
+                '<div class="btn_wrapper"> <div id="shareGame" class="btn" onclick="navigator.share({title:"分享吧!",text:"送给好友玩",url:"/index.html"}">分享</div>'+
                 '<div id="restartGame" class="btn">重新开始</div><p><a class="contact" href="http://tieba.baidu.com?fr=washbear" ></a></p>' +
                 '</div>';
             if (this.eraseCount == 0){
                 html = ' <div><p>真遗憾</p><p>没有擦死熊</p></div>'+
-                    '<div class="btn_wrapper"> <div id="shareGame" class="btn" onclick="navigator.share({url:"/index.html"})">分享</div>'+
+                    '<div class="btn_wrapper"> <div id="shareGame" class="btn" onclick="navigator.share({title:"分享吧!",text:"送给好友玩",url:"/index.html"}">分享</div>'+
                     '<div id="restartGame" class="btn">重新开始</div><p ><a class="contact" href="http://tieba.baidu.com?fr=washbear" ></a></p>' +
                     '</div>';
             }
@@ -368,7 +368,7 @@
         },
         infoDialog:function(){
             var html = ' <div><p>我擦！熊孩子！</p><p>'+this.timeLimit/10+'秒看你能擦几个？</p></div>'+
-                '<div class="btn_wrapper"> <div id="startGame" class="btn">开始</div><div id="shareGame" class="btn" onclick="navigator.share({url:"/index.html"})">分享</div><p><a class="contact" href="http://tieba.baidu.com?fr=washbear" ></a></p>'+
+                '<div class="btn_wrapper"> <div id="startGame" class="btn">开始</div><div id="shareGame" class="btn" onclick="navigator.share({title:"分享吧!",text:"送给好友玩",url:"/index.html"}">分享</div><p><a class="contact" href="http://tieba.baidu.com?fr=washbear" ></a></p>'+
                 '</div>';
             this.showDialog(html);
         },
