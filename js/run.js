@@ -335,7 +335,7 @@
         netTooSlow:function(){
 
             var html = ' <div><p>渣网速</p><p>没有擦掉熊</p></div>'+
-                    '<div class="btn_wrapper"> <div onclick="navigator.share({title:'分享吧!',text:'送给好友玩',url:'/index.html'})">分享</div>'+
+                    '<div class="btn_wrapper"> <div onclick="navigator.share({title:\'分享吧!\',text:\'送给好友玩\',url:\'/index.html\'})">分享</div>'+
                     '<div id="restartGame" class="btn">重新开始</div><p ><a class="contact" href="http://tieba.baidu.com" ></a></p>' +
                     '<p><a class="contact" href="http://www.chenjinya.cn" >about</a></p></div>';
 
