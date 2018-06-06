@@ -86,7 +86,7 @@ toolbox.router.get('/*', toolbox.networkFirst, { networkTimeoutSeconds: 5});
             // new Notification('Hello world.');
         });
 
-        _self.addEventListener('activate', function () {
+        _self.addEventListener('activate', function (event) {
             console.log('Activated');
               // 群发所有tab
               // _self.clients.matchAll().then(function(clients) {
@@ -110,9 +110,12 @@ toolbox.router.get('/*', toolbox.networkFirst, { networkTimeoutSeconds: 5});
           }
         }, false);
 
-
-
-
+event.waitUntil(
+           setInterval(function() {
+              _self.registration.showNotification('后台推送', {
+                    title:'sw消息的推送'
+              });
+          },5000)
         });
 
      
@@ -128,11 +131,7 @@ toolbox.router.get('/*', toolbox.networkFirst, { networkTimeoutSeconds: 5});
         // _self.addEventListener('push', onPush);
 
 
-        setInterval(function() {
-          showNotification('后台推送', {
-                title:'sw消息的推送'
-          });
-      },5000)
+       
 
           
 
