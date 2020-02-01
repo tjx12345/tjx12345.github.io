@@ -1,1 +1,170 @@
-<!DOCTYPE html><html lang=en><head><meta charset=utf-8><meta http-equiv=X-UA-Compatible content="IE=edge"><meta name=viewport content="width=device-width,initial-scale=1"><!--[if IE]><link rel="icon" href="/favicon.ico"><![endif]--><title>02_vue_pwa</title><link href=/css/app.b4a35303.css rel=preload as=style><link href=/js/app.9799dc99.js rel=preload as=script><link href=/js/chunk-vendors.31ee1662.js rel=preload as=script><link href=/css/app.b4a35303.css rel=stylesheet><link rel=icon type=image/png sizes=32x32 href=/img/icons/favicon-32x32.png><link rel=icon type=image/png sizes=16x16 href=/img/icons/favicon-16x16.png><link rel=manifest href=/manifest.json><meta name=theme-color content=#4DBA87><meta name=apple-mobile-web-app-capable content=yes><meta name=apple-mobile-web-app-status-bar-style content=black><meta name=apple-mobile-web-app-title content="My App"><link rel=apple-touch-icon href=/img/icons/apple-touch-icon-152x152.png><link rel=mask-icon href=/img/icons/safari-pinned-tab.svg color=#4DBA87><meta name=msapplication-TileImage content=/img/icons/msapplication-icon-144x144.png><meta name=msapplication-TileColor content=#000000></head><body><noscript><strong>We're sorry but 02_vue_pwa doesn't work properly without JavaScript enabled. Please enable it to continue.</strong></noscript><div id=app></div><script src=/js/chunk-vendors.31ee1662.js></script><script src=/js/app.9799dc99.js></script></body></html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>启道学院小游戏</title>
+	<style type="text/css">
+	body {
+		margin:0;
+		padding: 0;
+	}
+		.box-container {
+
+	    width: 100%;
+	    height: 100%;
+
+	    background-image: url("./img/bg.jpg");
+	    background-size: 100% 100%;
+	    position: fixed;
+	    top:0;left:0;
+
+		}
+		.score-box {
+			position: absolute;
+			right:0;
+			bottom: 0;
+			width: 250px;
+			height: 350px;
+			background-image: url('./img/board.png');
+			background-size: 100% 100%;
+			text-align: center;
+			padding-top: 100px;
+			box-sizing: border-box;
+		}
+		.letters {
+			position: absolute;
+			right: 250px;
+			top:0; left:0; bottom:0;
+		}
+		.letter {
+			transition: top 0.5s;
+		}
+		.over {
+			opacity: 0.4;
+			width: 100%;
+			height:100%;
+			background-color: #000;
+			display: none;
+			color:white;
+			font-size:50px;
+			font-weight: blod;
+			text-align: center;
+			line-height: 100%;
+		}
+		#logo {
+			width: 80px;
+			height: 80px;
+			position: absolute;
+			right:30px;
+			top:20px;
+		}
+	</style>
+	<link rel="shortcut icon " type="images/x-icon" href="./img/logo.png">
+</head>
+<body>
+	<div class="box-container">
+		<img id="logo" src="./img/logo.png" alt="">
+		<div class="letters"></div>
+		<div class="score-box">
+				<p>得分：0</p>
+				<p>丢失：0 / 10</p>
+		</div>
+		<div class="over">
+			游戏结束
+		</div>
+	</div>
+
+	<script type="text/javascript">
+		var scoreBox = document.querySelector('.score-box');
+		var box_container = document.querySelector('.box-container');
+		var lettersDiv = document.querySelector('.letters');
+		var letters = [];
+		var imgWidth = 100;
+		var lose = 0;
+		var score = 0;
+		var gameTimer,moveTimer;
+		var loseCount = 10;
+
+		var s = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+		var letterTemplate = s.split('');
+		function getRandomNum(from,dist) {
+			return from + Math.floor( Math.random() * (dist-from));
+		}
+		function Letter (content) {
+			this.content = s[getRandomNum(0,26)];
+			this.imgSrc = './img/letter/' + this.content + '.png';
+			this.speed = 35;
+			this.move = function () {
+				var top = this.ele.offsetTop;
+				if (lose === loseCount) return gameOver();
+				if (top > lettersDiv.offsetHeight - 100) {
+					lose++;
+					return this.kill();
+				}
+				this.ele.style.top = top + this.speed;
+
+			}
+			this.reRender = function () {
+				scoreBox.innerHTML = `
+				<p>得分：${score}</p>
+				<p>丢失：${lose} / 10</p>`
+			}
+			this.kill = function () {
+				clearInterval(this.timer);
+				this.ele.remove();
+				var index = letters.indexOf(this);
+				letters.splice(index,1);
+				this.reRender();
+			}
+		}
+		function createLetter() {
+			let l = new Letter();
+			var img = document.createElement('img');
+			img.src = l.imgSrc;
+			img.style.cssText = ';position:absolute;'
+			+ 'left:' + getRandomNum(0,lettersDiv.clientWidth-imgWidth) + 'px;'
+			+ 'top:-100px;'
+			img.className = 'letter';
+			l.ele = img;
+			letters.push(l);
+			lettersDiv.appendChild(img);
+		}
+
+		function keyHandler (e) {
+			for (var i = 0; i < letters.length; i++) {
+				var l = letters[i];
+				if (l.content === e.key.toUpperCase()) {
+					l.kill();
+					score++;
+					return;
+				}
+			}
+		
+		}
+		window.addEventListener('keypress',keyHandler);
+
+		function gameOver () {
+			window.removeEventListener('keypress',keyHandler);
+			clearInterval(gameTimer);
+			clearInterval(moveTimer);
+			document.querySelector('.over').style.display = 'block';
+			
+		}
+
+		function gameStart () {
+			clearInterval(gameTimer);
+			gameTimer = setInterval(function () {
+				createLetter();
+			},1000);
+		}
+		function move () {
+				moveTimer = setInterval(function () {
+					for (var i = 0; i < letters.length; i++) {
+						letters[i].move();
+					}
+				},30);
+		}
+		gameStart();
+		move();
+	</script>
+</body>
+</html>
